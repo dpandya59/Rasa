@@ -1,0 +1,49 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+# - story:  train_search
+#   steps:
+#   - intent: search_train
+#   - action: utter_search_train
+
+- story: bus_search
+  steps:
+  - intent: search_bus
+  - action: action_search_bus_form
+  - active_loop:  action_search_bus_form
+
+# - story: bus_search_happy_path
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   # - intent: search_bus
+#   - intent: goodbye
+#   - action: utter_goodbye
